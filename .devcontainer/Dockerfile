@@ -1,18 +1,14 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/codespaces-linux/.devcontainer/base.Dockerfile
+# Install Java (required for Spark)
+RUN apt-get update && apt-get install -y openjdk-11-jdk
 
-FROM mcr.microsoft.com/vscode/devcontainers/universal:2-focal
+# Download and install Apache Spark
+ENV APACHE_SPARK_VERSION=3.1.2
+RUN curl -sL --retry 3 \
+  "https://downloads.apache.org/spark/spark-${APACHE_SPARK_VERSION}/spark-${APACHE_SPARK_VERSION}-bin-hadoop3.2.tgz" \
+  | gunzip \
+  | tar x -C /usr/ \
+  && mv /usr/spark-${APACHE_SPARK_VERSION}-bin-hadoop3.2 /usr/spark
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
-RUN apt-get update && apt-get -y install --no-install-recommends \
-   python3.8-venv \
-   gcc 
-   
-ARG USER="codespace"
-ARG VENV_PATH="/home/${USER}/venv"
-COPY requirements.txt /tmp/
-COPY Makefile /tmp/
-RUN su $USER -c "/usr/bin/python3 -m venv /home/${USER}/venv" \
-   && su $USER -c "${VENV_PATH}/bin/pip --disable-pip-version-check --no-cache-dir install -r /tmp/requirements.txt" \
-   && rm -rf /tmp/requirements.txt 
+# Set environment variables for Spark
+ENV SPARK_HOME=/usr/spark
+ENV PATH=$PATH:$SPARK_HOME/bin
