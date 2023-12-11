@@ -1,16 +1,18 @@
 # Data Pipeline in Azure Databricks
 
 ## Overview
-This project demonstrates the creation of a data pipeline using Azure Databricks. The pipeline includes data ingestion, processing, and storage.
+This project demonstrates the creation of a data pipeline using Azure Databricks. The pipeline processes a dataset of bird observations, performing grouping and counting operations.
 
 ## Pipeline Components
 ### Data Ingestion
-_ Description: Data is ingested from a CSV file hosted on GitHub.
-_ Screenshot: Include a screenshot of the data ingestion code in the Databricks notebook.
+The data is ingested from a CSV file hosted on GitHub.
+(Screenshot: Include a screenshot here of the data ingestion code in the Databricks notebook.)
+
 ### Data Processing
-_ Description: The data is grouped by scientific_name and counted.
-Code Example: (Insert a brief snippet of your transformation code here)
-Screenshot: Include a screenshot of the transformation code and its output in the notebook.
+The data is grouped by scientific_name and counted.
+(Screenshot: Include a screenshot here of the transformation code and its output in the notebook.)
+
 ### Data Storage
-_ Description: The processed data is stored in DBFS as a Parquet file.
-Screenshot: Include a screenshot of the code used for writing the data to DBFS and the resulting file in DBFS.
+The processed data is stored in DBFS as a Parquet file.
+(Screenshot: Include a screenshot here of the code used for writing the data to DBFS and the resulting file in DBFS.)
+
