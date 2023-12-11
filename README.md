@@ -1,3 +1,5 @@
+[![CI](https://github.com/nogibjj/ZT-DE-week11-miniproject11/actions/workflows/actions.yml/badge.svg)](https://github.com/nogibjj/ZT-DE-week11-miniproject11/actions/workflows/actions.yml)
+
 # Data Pipeline in Azure Databricks
 
 ## Overview
